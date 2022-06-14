@@ -8,14 +8,14 @@ format:
 	@poetry run black .
 
 lint:
-	@poetry run pylint ./pureskillgg_makenew_pyskill
+	@poetry run pylint ./pureskillgg_datascience_showcase
 	@poetry run black --check .
 
 publish:
 	@poetry run twine upload --skip-existing dist/*
 
 test:
-	@poetry run pytest --cov=./pureskillgg_makenew_pyskill
+	@poetry run pytest --cov=./pureskillgg_datascience_showcase
 
 watch:
 	@poetry run ptw

@@ -1,204 +1,21 @@
-PureSkill.gg PySkill Skeleton
+PureSkill.gg Data Science Showcase
 =============================
 
 |PyPI| |GitHub Actions|
 
-.. |PyPI| image:: https://img.shields.io/pypi/v/pureskillgg-makenew-pyskill.svg
-   :target: https://pypi.python.org/pypi/pureskillgg-makenew-pyskill
+.. |PyPI| image:: https://img.shields.io/pypi/v/pureskillgg-datascience-showcase.svg
+   :target: https://pypi.python.org/pypi/pureskillgg-datascience-showcase
    :alt: PyPI
-.. |GitHub Actions| image:: https://github.com/pureskillgg/makenew-pyskill/workflows/main/badge.svg
-   :target: https://github.com/pureskillgg/makenew-pyskill/actions
+.. |GitHub Actions| image:: https://github.com/pureskillgg/datascience-showcase/workflows/main/badge.svg
+   :target: https://github.com/pureskillgg/datascience-showcase/actions
    :alt: GitHub Actions
 
-Package skeleton for a PureSkill.gg PySkill.
+Showcase for PureSkill.gg Data Science.
 
 Description
 -----------
 
-Bootstrap a new Python PureSkill.gg PySkill in less than a minute.
-
-🎓 Start with the Tutorial!
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-This repository is both a template for creating new a PySkill,
-and fully functioning tutorial project.
-
-⚡️💡⚡️ **If you are just getting started with PureSkill.gg data science, start here!**
-
-Follow these steps to start the tutorial.
-On completing the tutorial, you will understand how to do data science
-with PureSkill.gg data and be setup to download data from the public data set.
-Once you complete the tutorial, you may use this repository to bootstrap you own project.
-
-Resources
-^^^^^^^^^
-
-- Additional documentation at `📚 docs.pureskill.gg/datascience`_.
-- Reach out in `💬 Discord`_  if you get stuck or have any questions.
-
-.. _`💬 Discord`: https://pureskill.gg/discord
-.. _`📚 docs.pureskill.gg/datascience`: https://docs.pureskill.gg/datascience/
-
-Requirements
-^^^^^^^^^^^^
-
-*Tested on Linux, macOS, and Windows.*
-
-- `Python v3.9`_.
-- `Poetry v1`_.
-- Git_, `GitHub Desktop`_, or similar Git interface.
-
-*An effort has been made to use dependencies that provide Python Wheels for most platforms.
-This means you should not need to install extra compilers or packages.
-However, if you get errors when running poetry install, you may need to
-search for those errors and determine if additional packages must be installed
-on your platform.*
-
-.. _Git: https://git-scm.com/
-.. _GitHub Desktop: https://desktop.github.com/
-.. _Poetry v1: https://python-poetry.org/docs/
-.. _Python v3.9: https://www.python.org/downloads/release/python-3913/
-
-Setup
-^^^^^
-
-1. Clone this project locally using Git and enter the project working directory with
-
-::
-
-    $ git clone https://github.com/pureskillgg/makenew-pyskill.git
-    $ cd pyskill
-
-2. Confirm the correct Python (3.9.x) and Poetry (1.x.y) versions are installed with
-
-::
-
-    $ python --version
-    Python 3.9.12
-    $ poetry --version
-    Poetry version 1.1.13
-
-3. Install the dependencies with Poetry
-
-::
-
-    $ poetry install
-
-4. Start the Jupyter notebook server
-
-::
-
-    $ poetry run jupyter notebook notebooks
-
-5. Open the URL shown in the terminal,
-   and navigate to http://localhost:8888/notebooks/tutorial/1%20-%20Setup.ipynb.
-
-Features
-~~~~~~~~
-
-- Publishing to PyPI_.
-- Secure dependency management with Poetry_.
-- Linting with Pylint_.
-- Uncompromising code formatting with Black_.
-- pytest_ helps you write better programs.
-- Code coverage reporting with Codecov_.
-- Continuous testing and deployment with `GitHub Actions`_.
-- `Keep a CHANGELOG`_.
-- Consistent coding with EditorConfig_.
-- Badges from Shields.io_.
-
-.. _Black: https://black.readthedocs.io/en/stable/
-.. _Codecov: https://codecov.io/
-.. _EditorConfig: https://editorconfig.org/
-.. _GitHub Actions: https://github.com/features/actions
-.. _Keep a CHANGELOG: https://keepachangelog.com/
-.. _PyPI: https://pypi.python.org/pypi
-.. _Pylint: https://www.pylint.org/
-.. _Shields.io: https://shields.io/
-.. _pytest: https://docs.pytest.org/
-
-Bootstrapping a New Project
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-1. Create an empty (**non-initialized**) repository on GitHub.
-2. Clone the master branch of this repository with
-
-   ::
-
-       $ git clone --single-branch https://github.com/pureskillgg/makenew-pyskill.git new-pyskill
-       $ cd new-pyskill
-
-   Optionally, reset to the latest
-   `release <https://github.com/pureskillgg/makenew-pyskill/releases>`__ with
-
-   ::
-
-       $ git reset --hard v1.2.0
-
-3. Run
-
-   ::
-
-       $ ./makenew.sh
-
-   This will replace the boilerplate, delete itself,
-   remove the git remote, remove upstream tags,
-   and stage changes for commit.
-
-4. Create the required GitHub repository secrets
-5. Review, commit, and push the changes to GitHub with
-
-   ::
-
-     $ git diff --cached
-     $ git commit -m "Replace makenew boilerplate"
-     $ git remote add origin git@github.com:<user>/<new-pyskill>.git
-     $ git push -u origin master
-
-6. Ensure the GitHub action passes,
-   then publish the initial version of the package with
-
-   ::
-
-     $ poetry install
-     $ poetry run bump2version patch
-     $ git push
-     $ git push --tags
-
-Updating
-~~~~~~~~
-
-If you want to pull in future updates from this skeleton,
-you can fetch and merge in changes from this repository.
-
-Add this as a new remote with
-
-::
-
-    $ git remote rename origin upstream
-
-and then configure your ``origin`` branch as normal.
-
-Otherwise, add this as a new remote with
-
-::
-
-    $ git remote add upstream git@github.com:pureskillgg/makenew-pyskill.git
-
-You can then fetch and merge changes with
-
-::
-
-    $ git fetch --no-tags upstream
-    $ git merge upstream/master
-
-Changelog
-^^^^^^^^^
-
-Note that ``CHANGELOG.md`` is just a template for this skeleton. The
-actual changes for this project are documented in the commit history and
-summarized under
-`Releases <https://github.com/pureskillgg/makenew-pyskill/releases>`__.
+TODO
 
 Installation
 ------------
@@ -210,9 +27,9 @@ Install it with
 
 ::
 
-    $ poetry add pureskillgg-makenew-pyskill
+    $ poetry add pureskillgg-datascience-showcase
 
-.. _pureskillgg-makenew-pyskill: https://pypi.python.org/pypi/pureskillgg-makenew-pyskill
+.. _pureskillgg-datascience-showcase: https://pypi.python.org/pypi/pureskillgg-datascience-showcase
 .. _Python Package Index (PyPI): https://pypi.python.org/
 
 Development and Testing
@@ -223,7 +40,7 @@ Quickstart
 
 ::
 
-    $ git clone https://github.com/pureskillgg/makenew-pyskill.git
+    $ git clone https://github.com/pureskillgg/datascience-showcase.git
     $ cd pyskill
     $ poetry install
 
@@ -243,9 +60,9 @@ Clone the project with
 
 ::
 
-    $ git clone https://github.com/pureskillgg/makenew-pyskill.git
+    $ git clone https://github.com/pureskillgg/datascience-showcase.git
 
-.. _source code: https://github.com/pureskillgg/makenew-pyskill
+.. _source code: https://github.com/pureskillgg/datascience-showcase
 
 Requirements
 ~~~~~~~~~~~~
@@ -294,7 +111,7 @@ Push the created git tag which will trigger a GitHub action.
 Publishing may be triggered using on the web
 using a `workflow_dispatch on GitHub Actions`_.
 
-.. _workflow_dispatch on GitHub Actions: https://github.com/pureskillgg/makenew-pyskill/actions?query=workflow%3Aversion
+.. _workflow_dispatch on GitHub Actions: https://github.com/pureskillgg/datascience-showcase/actions?query=workflow%3Aversion
 
 GitHub Actions
 --------------
@@ -331,7 +148,7 @@ Please submit and comment on bug reports and feature requests.
 
 To submit a patch:
 
-1. Fork it (https://github.com/pureskillgg/makenew-pyskill/fork).
+1. Fork it (https://github.com/pureskillgg/datascience-showcase/fork).
 2. Create your feature branch (`git checkout -b my-new-feature`).
 3. Make changes.
 4. Commit your changes (`git commit -am 'Add some feature'`).
