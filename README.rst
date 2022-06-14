@@ -21,7 +21,7 @@ Installation
 ------------
 
 This package is registered on the `Python Package Index (PyPI)`_
-as pureskillgg-makenew_pyskill_.
+as pureskillgg-datascience-showcase_.
 
 Install it with
 
