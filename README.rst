@@ -10,7 +10,7 @@ PureSkill.gg Data Science Showcase
    :target: https://github.com/pureskillgg/datascience-showcase/actions
    :alt: GitHub Actions
 
-Showcase for PureSkill.gg Data Science.
+Showcase of public PureSkill.gg data set applications.
 
 Description
 -----------
