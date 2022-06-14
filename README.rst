@@ -1,5 +1,5 @@
 PureSkill.gg Data Science Showcase
-=============================
+==================================
 
 |PyPI| |GitHub Actions|
 
