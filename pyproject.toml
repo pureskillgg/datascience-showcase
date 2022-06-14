@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pureskillgg-datascience-showcase"
-version = "0.0.0"
+version = "0.0.0b0"
 description = "Showcase for PureSkill.gg Data Science."
 authors = ["PureSkill.gg <contact@pureskill.gg>"]
 license = "MIT"
