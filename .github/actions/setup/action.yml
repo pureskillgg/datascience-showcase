@@ -10,25 +10,20 @@ inputs:
   poetry_version:
     description: The Poetry version.
     required: false
-    default: '1.1.13'
+    default: '1.2.1'
 
 runs:
   using: composite
   steps:
-    - name: Setup Python
-      uses: actions/setup-python@v3
-      with:
-        python-version: ${{ inputs.python_version }}
     - name: Setup Poetry
-      uses: gr1n/setup-poetry@v7
+      uses: snok/install-poetry@v1
       with:
-        poetry-version: ${{ inputs.poetry_version }}
-    - name: Setup cache
-      uses: actions/cache@v2
+        version: ${{ inputs.poetry_version }}
+    - name: Setup Python
+      uses: actions/setup-python@v6
       with:
-        path: ~/.cache/pypoetry/virtualenvs
-        key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
-        restore-keys: ${{ runner.os }}-poetry-
+        cache: poetry
+        python-version: ${{ inputs.python_version }}
     - name: Install dependencies
       shell: bash
       run: poetry install
