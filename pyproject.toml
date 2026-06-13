@@ -1,6 +1,6 @@
 [project]
 name = "pureskillgg-datascience-showcase"
-version = "0.0.3"
+version = "0.0.4"
 description = "Showcase of public PureSkill.gg data set applications."
 authors = [{ name = "PureSkill.gg", email = "contact@pureskill.gg" }]
 license = "MIT"
