@@ -8,11 +8,11 @@ on:
 
 jobs:
   pypi:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v5
       - name: Setup
         uses: ./.github/actions/setup
       - name: Build
