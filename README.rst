@@ -27,7 +27,7 @@ Install it with
 
 ::
 
-    $ poetry add pureskillgg-datascience-showcase
+    $ uv add pureskillgg-datascience-showcase
 
 .. _pureskillgg-datascience-showcase: https://pypi.python.org/pypi/pureskillgg-datascience-showcase
 .. _Python Package Index (PyPI): https://pypi.python.org/
@@ -42,7 +42,7 @@ Quickstart
 
     $ git clone https://github.com/pureskillgg/datascience-showcase.git
     $ cd pyskill
-    $ poetry install
+    $ uv sync
 
 Run each command below in a separate terminal window:
 
@@ -67,15 +67,15 @@ Clone the project with
 Requirements
 ~~~~~~~~~~~~
 
-You will need `Python 3`_ and Poetry_.
+You will need `Python 3`_ and uv_.
 
 Install the development dependencies with
 
 ::
 
-    $ poetry install
+    $ uv sync
 
-.. _Poetry: https://poetry.eustace.io/
+.. _uv: https://docs.astral.sh/uv/
 .. _Python 3: https://www.python.org/
 
 Tests
