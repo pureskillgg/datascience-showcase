@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## Unreleased
 
+## 0.0.4 / 2026-06-13
+
+### Added
+
+- Disconnect reason analysis notebook.
+- M4 usage analysis (June 2022) notebook.
+
 ### Changed
 
 - Modernized GitHub Actions workflows so current runners can schedule them:
@@ -18,3 +25,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
   `actions/setup-python`'s built-in `cache: poetry`.
 - Switched the build backend to `poetry-core` (`poetry.core.masonry.api`) so
   source distributions use PEP 625-compliant filenames on PyPI.
+
+## 0.0.3 / 2022-06-14
+
+### Fixed
+
+- Fixed the README title underline length.
+
+## 0.0.2 / 2022-06-14
+
+### Changed
+
+- Updated the project description to "Showcase of public PureSkill.gg data set
+  applications."
+
+## 0.0.1 / 2022-06-14
+
+### Added
+
+- Initial release of the data science showcase package.
