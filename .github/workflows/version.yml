@@ -1,5 +1,6 @@
 ---
 name: version
+run-name: Cut ${{ github.event.inputs.version }}${{ github.event.client_payload.version }}
 
 on:
   workflow_dispatch:
@@ -49,8 +50,10 @@ jobs:
       - name: Build
         run: make build
       - name: Cut ${{ github.event.inputs.version }}${{ github.event.client_payload.version }} version
+        env:
+          VERSION: ${{ github.event.inputs.version }}${{ github.event.client_payload.version }}
         run: |
-          version="${{ github.event.inputs.version }}${{ github.event.client_payload.version }}"
+          version="$VERSION"
           if [[ "${version}" =~ [0-9] ]]; then
             uv run bump2version --sign-tags --new-version $version major
           else
