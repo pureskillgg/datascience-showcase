@@ -9,9 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
-- Harden the deploy workflows: pass the version input through `env:` instead of interpolating it into the shell line; give the dispatch and tag workflows readable run titles.
-
-- GitHub Actions updated to Node 24 runtimes: `actions/checkout` v5 to v7; `astral-sh/setup-uv` v6 to v9.0.0.
+- Harden the deploy workflows.
+- Update GitHub Actions to Node 24 runtimes.
 
 ## 0.0.4 / 2026-06-13
 
@@ -22,15 +21,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
-- Modernized GitHub Actions workflows so current runners can schedule them:
-  `ubuntu-20.04` runners to `ubuntu-latest`, `actions/checkout` v2 to v5,
-  `actions/setup-python` v3 to v6, `crazy-max/ghaction-import-gpg` v4 to v7,
-  and `stefanzweifel/git-auto-commit-action` v4 to v7.
-- Replaced the abandoned `gr1n/setup-poetry` action with the maintained
-  `snok/install-poetry@v1` (Poetry 1.2.1) and moved dependency caching to
-  `actions/setup-python`'s built-in `cache: poetry`.
-- Switched the build backend to `poetry-core` (`poetry.core.masonry.api`) so
-  source distributions use PEP 625-compliant filenames on PyPI.
+- Modernize the GitHub Actions workflows.
+- Replace `gr1n/setup-poetry` with `snok/install-poetry` and move caching to `setup-python`.
+- Switch the build backend to `poetry-core`.
 
 ## 0.0.3 / 2022-06-14
 
