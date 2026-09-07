@@ -119,7 +119,7 @@ Failures surface only in development and CI:
   problems surface as cell output / tracebacks when running ``make notebook``.
 - **In CI**, as red checks in the GitHub Actions UI. Workflows: ``main.yml``
   (build/test), ``publish.yml`` (publishes to PyPI; triggers **only on tag push**,
-  ``tags: v*``, and needs the ``PYPI_API_TOKEN`` secret as ``TWINE_PASSWORD``),
+  ``tags: v*``, and needs the ``PYPI_API_TOKEN`` secret as ``UV_PUBLISH_TOKEN``),
   plus ``format.yml`` and ``version.yml``.
 
 Documentation
