@@ -16,10 +16,9 @@ jobs:
         uses: actions/checkout@v7
       - name: Setup
         uses: ./.github/actions/setup
-      - name: Build
-        run: make build
       - name: Publish
-        run: make publish
+        run: |
+          uv build
+          uv publish --check-url https://pypi.org/simple/
         env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+          UV_PUBLISH_TOKEN: ${{ secrets.PYPI_API_TOKEN }}

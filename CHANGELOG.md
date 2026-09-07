@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 - Harden the deploy workflows.
 - Update GitHub Actions to Node.js 24 runtimes.
+- Publish to PyPI with `uv publish` instead of `twine`.
+
+### Fixed
+
+- Publish workflow failing on `import twine` (`KeyError: 'license'`).
 
 ## 0.0.4 / 2026-06-13
 
