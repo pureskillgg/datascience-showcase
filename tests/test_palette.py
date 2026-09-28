@@ -48,6 +48,12 @@ def test_negative_series_count():
         psgg.series_colors(-1)
 
 
+def test_helpers_follow_the_theme_in_force():
+    psgg.use("light")
+    assert psgg.side_color("T") == psgg.LIGHT.t
+    assert psgg.series_colors(1) == [psgg.LIGHT.series[0]]
+
+
 def test_side_colors():
     assert psgg.side_color("T") == "#e89230"
     assert psgg.side_color("ct") == "#84a9dc"

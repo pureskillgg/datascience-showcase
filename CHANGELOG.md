@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - `save_animation()` for MP4s, using the ffmpeg that comes with `imageio-ffmpeg`.
 - `load_env()` and `curator()` to find a local tome collection from a `.env` at the repo root.
 - Pre-commit and CI checks that keep data, secrets, videos, notebook outputs and unstamped gallery images out of git.
+- Stock radars and Valve's overview numbers for 14 maps, with `maps.draw_radar()`, `to_radar()`, `level_of()`, `heatmap()` and `label_sites()`.
+- Docs: getting the data, a data primer with field notes, and a style guide with images rendered by the kit.
+- AGENTS.md and a `make-graphic` skill for coding agents.
+- A gallery with an index built from each item's README, a gallery item template, and CONTRIBUTING.md.
 
 ### Changed
 
