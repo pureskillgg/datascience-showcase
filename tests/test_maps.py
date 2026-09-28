@@ -38,6 +38,12 @@ def test_single_floor_maps_are_all_default():
     assert set(maps.level_of("de_mirage", [-500, 0, 500])) == {"default"}
 
 
+def test_heights_off_every_floor_are_unknown():
+    levels = maps.level_of("de_nuke", [np.nan, -16384, 0])
+    assert list(levels) == [None, None, "default"]
+    assert maps.level_of("de_mirage", [np.nan])[0] is None
+
+
 def test_unknown_map_and_level():
     with pytest.raises(ValueError, match="No radar"):
         maps.overview("de_shortdust")

@@ -20,6 +20,8 @@ import argparse
 import sys
 from pathlib import Path
 
+from PIL import Image
+
 ROOT = Path(__file__).resolve().parent.parent
 GALLERY = ROOT / "gallery"
 REQUIRED = ("title", "author", "official", "data", "image")
@@ -60,10 +62,30 @@ def items(gallery=GALLERY):
         problems = [f"missing '{k}' in README front matter" for k in REQUIRED if not meta.get(k)]
         if meta.get("official") not in (None, "", "true", "false"):
             problems.append("'official' must be true or false")
-        if meta.get("image") and not (folder / meta["image"]).is_file():
-            problems.append(f"image {meta['image']} not found")
+        if meta.get("image"):
+            problems += image_problems(folder, meta)
         out.append((folder.name, meta, problems))
     return out
+
+
+def image_problems(folder, meta):
+    """Why the item's image can't be used: outside the folder, not a PNG, missing, or stamped otherwise."""
+    name = meta["image"]
+    path = (folder / name).resolve()
+    if Path(name).is_absolute() or folder.resolve() not in path.parents:
+        return [f"image {name} must be a file inside the item's folder"]
+    if path.suffix.lower() != ".png":
+        return [f"image {name} must be a PNG saved with psgg.save()"]
+    if not path.is_file():
+        return [f"image {name} not found"]
+    with Image.open(path) as img:
+        stamp = dict(getattr(img, "text", {}) or {})
+    if stamp.get("psgg:official") not in ("true", "false"):
+        return [f"image {name} has no kit stamp; save it with psgg.save()"]
+    saved = stamp["psgg:official"]
+    if meta.get("official") in ("true", "false") and saved != meta["official"]:
+        return [f"'official: {meta['official']}' doesn't match the image, which was saved official={saved}"]
+    return []
 
 
 def render(entries):

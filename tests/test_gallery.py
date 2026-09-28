@@ -29,7 +29,7 @@ def write_item(gallery, slug, meta, image=True):
     lines = ["---", *(f"{k}: {v}" for k, v in meta.items()), "---", "", "Text."]
     (folder / "README.md").write_text("\n".join(lines), encoding="utf-8")
     if image:
-        fig, _ = psgg.figure("Item")
+        fig, _ = psgg.figure("Item", official=meta.get("official") == "true")
         psgg.save(folder / meta.get("image", "graphic.png"), fig)
 
 
@@ -64,6 +64,31 @@ def test_missing_fields_and_image_are_reported(tmp_path):
     assert any("author" in p for p in problems)
     assert any("true or false" in p for p in problems)
     assert any("gone.png" in p for p in problems)
+
+
+def test_image_must_be_a_png_inside_the_item(tmp_path):
+    write_item(tmp_path, "outside", {**META, "image": "../elsewhere.png"}, image=False)
+    (tmp_path / "elsewhere.png").write_bytes(b"")
+    write_item(tmp_path, "readme", {**META, "image": "README.md"}, image=False)
+    problems = {slug: ps for slug, _, ps in build_gallery.items(tmp_path)}
+    assert any("inside the item's folder" in p for p in problems["outside"])
+    assert any("must be a PNG" in p for p in problems["readme"])
+
+
+def test_official_must_match_the_image_stamp(tmp_path):
+    write_item(tmp_path, "claims-official", {**META, "official": "true"}, image=False)
+    fig, _ = psgg.figure("Not official")
+    psgg.save(tmp_path / "claims-official" / "graphic.png", fig)
+    folder = tmp_path / "hides-logo"
+    folder.mkdir()
+    (folder / "README.md").write_text(
+        "\n".join(["---", *(f"{k}: {v}" for k, v in META.items()), "---"]), encoding="utf-8"
+    )
+    fig, _ = psgg.figure("Official", official=True)
+    psgg.save(folder / "graphic.png", fig)
+    problems = {slug: ps for slug, _, ps in build_gallery.items(tmp_path)}
+    assert any("doesn't match" in p for p in problems["claims-official"])
+    assert any("doesn't match" in p for p in problems["hides-logo"])
 
 
 def test_template_readme_has_every_field():

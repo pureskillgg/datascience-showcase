@@ -54,13 +54,17 @@ def to_radar(map_name, x, y):
 
 
 def level_of(map_name, z):
-    """The floor each height is on: 'default', or 'lower' on two-floor maps. Returns an array."""
+    """
+    The floor each height is on, as an array: 'default', or 'lower' on two-floor maps.
+
+    Heights outside every floor's range (NaN, or below the world on Nuke) get
+    None, so filtering on a floor never picks them up by accident.
+    """
     levels = overview(map_name)["levels"]
     z = np.asarray(z, dtype=float)
-    out = np.full(z.shape, "default", dtype=object)
-    if "lower" in levels:
-        lower = levels["lower"]
-        out[(z >= lower["min"]) & (z < lower["max"])] = "lower"
+    out = np.full(z.shape, None, dtype=object)
+    for name, bounds in levels.items():
+        out[(z >= bounds["min"]) & (z < bounds["max"])] = name
     return out
 
 
