@@ -14,6 +14,7 @@ Every saved image carries "Data provided by PureSkill.gg." Pass official=True
 only for graphics PureSkill.gg itself made; it adds the logo.
 """
 
+from . import maps
 from .animation import save_animation
 from .data import ENV_VARS, curator, load_env
 from .figure import add_footer, figure, legend, read_stamp, save
@@ -49,6 +50,7 @@ __all__ = [
     "heat_cmap",
     "legend",
     "load_env",
+    "maps",
     "rc_params",
     "read_stamp",
     "save",
