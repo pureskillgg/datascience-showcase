@@ -27,7 +27,7 @@ jobs:
         uses: ./.github/actions/setup
       - name: Lint
         run: make lint
-  build:
+  check:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -35,5 +35,5 @@ jobs:
         uses: actions/checkout@v7
       - name: Setup
         uses: ./.github/actions/setup
-      - name: Build
-        run: make build
+      - name: Check for data, secrets, videos and unstamped gallery images
+        run: make check

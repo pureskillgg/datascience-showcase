@@ -1,0 +1,14 @@
+---
+# Install once with: make hooks
+repos:
+  - repo: https://github.com/kynan/nbstripout
+    rev: 0.9.1
+    hooks:
+      - id: nbstripout
+  - repo: local
+    hooks:
+      - id: check-repo
+        name: check for data, secrets, videos and unstamped gallery images
+        entry: uv run python scripts/check_repo.py
+        language: system
+        pass_filenames: true

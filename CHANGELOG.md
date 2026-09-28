@@ -7,11 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## Unreleased
 
+### Added
+
+- A matplotlib style kit, applied on import: PureSkill.gg colors (dark and light), Russo One titles, Assistant text, and the series, side and heat colors.
+- Size presets for social posts, slides, link previews and articles, with a `scale` setting for higher resolutions.
+- `figure()` for a branded canvas, `legend()` under the subtitle, and `save()`, which adds "Data provided by PureSkill.gg." to every image and stamps PNGs.
+- `save_animation()` for MP4s, using the ffmpeg that comes with `imageio-ffmpeg`.
+- `load_env()` and `curator()` to find a local tome collection from a `.env` at the repo root.
+- Pre-commit and CI checks that keep data, secrets, videos, notebook outputs and unstamped gallery images out of git.
+
 ### Changed
 
+- Require Python 3.14 and `pureskillgg-dsdk` 3.2.
+- Rewrite the README in Markdown.
 - Harden the deploy workflows.
 - Update GitHub Actions to Node.js 24 runtimes.
 - Publish to PyPI with `uv publish` instead of `twine`.
+
+### Removed
+
+- The CS:GO disconnect and M4 notebooks, the notebook template and the old `.env` bootstrap.
+- Publishing to PyPI: the publish and version workflows and bump2version. Earlier releases stay on PyPI.
 
 ### Fixed
 
