@@ -16,7 +16,7 @@ only for graphics PureSkill.gg itself made; it adds the logo.
 
 from . import maps
 from .animation import save_animation
-from .data import ENV_VARS, curator, load_env
+from .data import ENV_VARS, curator, list_tomes, load_env
 from .figure import add_footer, figure, legend, read_stamp, save
 from .palette import (
     ATTRIBUTION,
@@ -49,6 +49,7 @@ __all__ = [
     "get_theme",
     "heat_cmap",
     "legend",
+    "list_tomes",
     "load_env",
     "maps",
     "rc_params",

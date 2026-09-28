@@ -45,6 +45,7 @@ The data is the PureSkill.gg Competitive CS2 Gameplay data set on the AWS Data E
 | T and CT colors | `psgg.side_color("T")`, `psgg.side_color("CT")` |
 | A map radar, positions and heat | `psgg.maps.draw_radar`, `psgg.maps.to_radar`, `psgg.maps.heatmap`, `psgg.maps.label_sites` |
 | A video | `psgg.save_animation(anim, "out/clip.mp4")` |
+| Your tomes, and your data paths | `psgg.list_tomes()`, `psgg.load_env(verbose=True)` |
 
 | Preset | Size | For |
 | --- | --- | --- |

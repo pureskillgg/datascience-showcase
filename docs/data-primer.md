@@ -19,6 +19,18 @@ A short orientation, then the traps that make a chart quietly wrong. For every c
 - **Regulation is 24 rounds** (MR12): pistol rounds are 1 and 13, and overtime is rounds 25 and up, in sets of six. Old CS:GO rules (30 rounds) don't apply.
 - **`player_spawn.round` is one behind.** A spawn is labelled with the round that just ended, and round 1's spawn is missing. Shift it by one before joining per-round data.
 - **`score_update` double-counts at halftime.** It mixes round wins with side-swap rows. Take round winners from `round_end.winner_team_code`.
+- **Don't trust the header's "starters" columns** (`*_starters_score_final`, `*_starters_avg_rank`, `*_starters_avg_wins`). They're computed on the old 30-round boundary and misattribute scores: in a sample of 17,280 matches, the two final scores added up to the number of rounds played in only 9,205. Count rounds and wins from `round_end`.
+
+### Dates and matches
+
+- **When a match was played is `header.match_date`**, an ISO 8601 timestamp. Some have fractional seconds and some don't, so parse with `pd.to_datetime(df["match_date"], format="ISO8601")`.
+- **The date in a match's folder is when it was uploaded and processed,** which can be later than when it was played. Use `match_date` for "when".
+- **A match's key** is its path under the collection (`csds/<yyyy>/<mm>/<dd>/<match>/csds`). The header tome has it as `key`; tomes you build get it from the loop in [getting data](getting-data.md).
+
+### Players, bots and disconnects
+
+- **Bots appear as players.** `player_personal.is_bot` and `player_disconnect.is_bot` flag them, and `bot_takeover` records a human taking a bot over. Filter them out of per-player stats.
+- **`player_disconnect.disconnect_reason` is always empty in CS2 data**, so the data can't say *why* someone left, only when. Some disconnect rows also have no `player_id_fixed`.
 
 ### Positions and maps
 

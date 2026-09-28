@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - Size presets for social posts, slides, link previews and articles, with a `scale` setting for higher resolutions.
 - `figure()` for a branded canvas, `legend()` under the subtitle, and `save()`, which adds "Data provided by PureSkill.gg." to every image and stamps PNGs.
 - `save_animation()` for MP4s, using the ffmpeg that comes with `imageio-ffmpeg`.
-- `load_env()` and `curator()` to find a local tome collection from a `.env` at the repo root.
+- `load_env()`, `curator()` and `list_tomes()` to find a local tome collection from a `.env` at the repo root.
 - Pre-commit and CI checks that keep data, secrets, videos, notebook outputs and unstamped gallery images out of git.
 - Stock radars and Valve's overview numbers for 14 maps, with `maps.draw_radar()`, `to_radar()`, `level_of()`, `heatmap()` and `label_sites()`.
 - Docs: getting the data, a data primer with field notes, and a style guide with images rendered by the kit.

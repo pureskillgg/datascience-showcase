@@ -36,6 +36,21 @@ def load_env(*, verbose=False):
     return Path(found) if found else None
 
 
+def list_tomes(*, collection=None, ds_type=None):
+    """
+    The tomes in your tome collection, as {name: page count}.
+
+    A tome with 0 pages is empty or unfinished, and get_dataframe() fails on it
+    ("No objects to concatenate"). collection and ds_type default to .env.
+    """
+    load_env()
+    root = Path(collection or os.environ["PURESKILLGG_TOME_COLLECTION_PATH"])
+    folder = root / "tome" / (ds_type or os.environ.get("PURESKILLGG_TOME_DS_TYPE", "csds"))
+    if not folder.is_dir():
+        return {}
+    return {p.name: len(list(p.glob("dataframe_*"))) for p in sorted(folder.iterdir()) if p.is_dir()}
+
+
 def curator(**kwargs):
     """A dsdk TomeCuratorFs for your local data, after loading .env."""
     load_env()

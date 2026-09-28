@@ -18,7 +18,7 @@ Settle four things before writing code. Ask the user about anything you can't in
   | Instagram feed, LinkedIn, Discord | `square` |
   | Instagram feed (more screen), Reddit on phones | `portrait` |
   | Stories, reels, TikTok, YouTube Shorts | `vertical` |
-  | YouTube, slides, X, Reddit | `wide` |
+  | YouTube, slides, X, Reddit, Discord | `wide` |
   | Link previews | `link` |
   | Docs, blog posts | `article` |
 
@@ -40,6 +40,7 @@ Six series at most. A seventh goes into "Other", or the chart is split.
 ## 3. Get the data
 
 - Load `.env` and the curator: `curator = psgg.curator()`. If it fails, ask the user where their data and tomes are. Never make data up.
+- See what's already built with `psgg.list_tomes()`, which gives each tome's page count; 0 pages means empty. Reuse a tome that covers the question.
 - Read `docs/data-primer.md` for the columns you'll use. The usual traps:
   - team code 2 is T and 3 is CT;
   - `m4a1` is the M4A4;
@@ -47,8 +48,9 @@ Six series at most. A seventh goes into "Other", or the chart is split.
   - `*_id_fixed` columns can load as floats;
   - rank columns mix two scales;
   - two-floor maps need splitting by height.
-- Work the transform out on one match (`curator.get_match_by_index(0).get_channels()`). Then build a tome with `make_tome` and `ds_reading_instructions` naming only the columns you need (`docs/getting-data.md`). Reuse a tome that already exists.
-- Keep a note of **how many matches and which dates**; the subtitle needs them.
+- Work the transform out on one match from the same header view the tome uses, so it's from the same days: `curator.get_match_by_index(0, "<header or subheader>").get_channels()`. Then build a tome with `make_tome` and `ds_reading_instructions` naming only the columns you need (`docs/getting-data.md`).
+- **Check that the columns you need actually hold data** (`value_counts()`, null counts) before you build anything on them. If the data can't answer the question (the column is empty, missing or unreliable), **stop and tell the user**, and offer the nearest question it can answer. Never switch questions silently. For example, `player_disconnect.disconnect_reason` is always empty, so "why players leave" can't be answered, but "when they leave" can.
+- Keep a note of **how many matches and which dates**; the subtitle needs them. The play date is `header.match_date`, not the folder date.
 
 ## 4. Draw it with the kit
 
@@ -64,7 +66,10 @@ psgg.save("out/kills.png", fig)         # adds the attribution, stamps the PNG
 - Don't set colors, fonts, sizes or the figure size by hand. For series use the color cycle or `psgg.series_colors(n)`; for sides, `psgg.side_color("T")`.
 - Maps: `psgg.maps.draw_radar(ax, map_name)`, then `psgg.maps.heatmap(...)` or `ax.scatter(*psgg.maps.to_radar(map_name, x, y))`, then `psgg.maps.label_sites(ax, map_name)`.
 - Animations: build a `FuncAnimation` on a `psgg.figure()` canvas and render it with `psgg.save_animation(anim, "out/clip.mp4")`. Use `vertical` for TikTok and Shorts.
-- Label directly when it's clearer: values at bar ends, series names at line ends (four series or fewer).
+- **Horizontal bars:** the style puts grid lines across the y axis, so switch them for bars that run sideways: `ax.grid(axis="x"); ax.grid(axis="y", visible=False)`.
+- **Label directly when it's clearer:**
+  - Values at bar ends: `bars = ax.barh(...)`, then `ax.bar_label(bars, fmt="{:.0f}%", padding=8)`. The labels take the style's ink color; don't color them.
+  - Series names at line ends, for four series or fewer.
 - `official=True` only if step 1 said official.
 
 ## 5. Write it to out/

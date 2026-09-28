@@ -87,13 +87,14 @@ tomer = curator.make_tome(
 )
 for data, key in tomer.iterate():
     df = data["player_death"]
-    df["match"] = key
+    df["match_key"] = key          # the match, same as the header tome's `key` column
     tomer.concat(df)
 
 deaths = curator.get_dataframe("deaths_mirage")
 ```
 
-- **Work out the transform on one match first:** `curator.get_match_by_index(0).get_channels()`. Then move it into the loop.
+- **See what's already built:** `psgg.list_tomes()` returns each tome with its page count. A tome with 0 pages is empty or unfinished, and `get_dataframe` fails on it with `No objects to concatenate`.
+- **Work out the transform on one match first,** taken from the header view you'll build from, so it comes from the same days: `curator.get_match_by_index(0, "subheader_mirage").get_channels()`. Then move it into the loop.
 - **Read only what you need.** `ds_reading_instructions` picks channels and columns, and building is much faster for it.
 - **A tome can't grow once it's finished.** To add days, build it again under a new name. A common convention puts the dates in the name: `deaths_mirage.2026-08-01,2026-08-08`.
 - **Older revisions have fewer channels.** Days before 2026-08-04 have 30 files per match instead of 42, so a channel you ask for may be missing. The [archived spec](https://docs.pureskill.gg/datascience/old/cs2/csds/spec) lists what they had.

@@ -37,7 +37,7 @@ Follow **`.agents/skills/make-graphic/SKILL.md`** every time. It is the procedur
   - the title and subtitle say what's shown and which matches and dates;
   - the chart answers the question.
   Fix what you find and render again.
-- **Check the data before you trust a column.** `docs/data-primer.md` lists the traps: team codes, the M4 names, the angle names, missing-value codes, the rank scales, two-floor maps. For anything else, see the [CSDS spec](https://docs.pureskill.gg/datascience/adx/cs2/csds/spec).
+- **Check the data before you trust a column.** `docs/data-primer.md` lists the traps: team codes, the M4 names, the angle names, missing-value codes, the rank scales, dates, two-floor maps. For anything else, see the [CSDS spec](https://docs.pureskill.gg/datascience/adx/cs2/csds/spec). If the data can't answer the question, stop and tell the user. Offer the nearest question it can answer, and never switch questions silently.
 - **Data never goes in git:** no parquet, CSV or other tables, no downloaded matches or tomes, no `.env`. Work output goes in `out/`, which git ignores.
 - **Videos never go in git.** Render them to `out/` with `psgg.save_animation()`. In the gallery, commit a still frame (a `psgg.save()` PNG) and put the video's link in the item's README.
 - **Notebooks are committed without outputs.** The pre-commit hook strips them.
