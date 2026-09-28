@@ -3,6 +3,7 @@
 # pylint: disable=missing-function-docstring
 
 import matplotlib as mpl
+import pytest
 from matplotlib import font_manager
 
 import pureskillgg_datascience_showcase as psgg
@@ -32,6 +33,17 @@ def test_switch_to_light_and_wide():
     assert mpl.rcParams["axes.prop_cycle"].by_key()["color"] == list(psgg.LIGHT.series)
     assert tuple(mpl.rcParams["figure.figsize"]) == (1920 / 72, 1080 / 72)
     assert psgg.current()["theme"] == "light"
+
+
+def test_rejected_change_leaves_style_untouched():
+    before = psgg.current()
+    facecolor = mpl.rcParams["axes.facecolor"]
+    for bad in ({"scale": 0}, {"theme": "light", "preset": "banner"}, {"theme": "sepia"}):
+        with pytest.raises(ValueError):
+            psgg.use(**bad)
+        assert psgg.current() == before
+        assert mpl.rcParams["axes.facecolor"] == facecolor
+    psgg.use()
 
 
 def test_colormaps_registered():

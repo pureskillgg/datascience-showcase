@@ -19,9 +19,40 @@ from PIL import Image, UnidentifiedImageError
 STAMP_KEY = "psgg:attribution"
 ATTRIBUTION = "Data provided by PureSkill.gg."
 MAX_BYTES = 10 * 1024 * 1024
-DATA_EXT = {".parquet", ".feather", ".arrow", ".pkl", ".pickle", ".npy", ".npz", ".h5", ".hdf5", ".dem"}
-VIDEO_EXT = {".mp4", ".mov", ".webm", ".mkv", ".avi", ".m4v", ".gif"}
-IMAGE_EXT = {".png", ".jpg", ".jpeg", ".webp", ".svg", ".bmp", ".tif", ".tiff"}
+DATA_EXT = {
+    # tables
+    ".parquet",
+    ".feather",
+    ".arrow",
+    ".csv",
+    ".tsv",
+    ".xlsx",
+    ".xls",
+    ".jsonl",
+    ".ndjson",
+    # binary dumps and databases
+    ".pkl",
+    ".pickle",
+    ".npy",
+    ".npz",
+    ".h5",
+    ".hdf5",
+    ".db",
+    ".sqlite",
+    ".duckdb",
+    # demos and archives (a CSDS manifest is gzipped)
+    ".dem",
+    ".zip",
+    ".gz",
+    ".tgz",
+    ".tar",
+    ".7z",
+    ".bz2",
+    ".xz",
+}
+VIDEO_EXT = {".mp4", ".m4v", ".mov", ".webm", ".mkv", ".avi", ".mpeg", ".mpg", ".wmv", ".flv", ".gif"}
+IMAGE_EXT = {".png", ".jpg", ".jpeg", ".webp", ".svg", ".bmp", ".tif", ".tiff", ".avif", ".heic", ".heif"}
+GZIP_MAGIC = b"\x1f\x8b"
 PARQUET_MAGIC = b"PAR1"
 
 
@@ -72,8 +103,11 @@ def file_problems(path, root):
         problems.append(f"{size / 1024 / 1024:.1f} MB is over the {MAX_BYTES // 1024 // 1024} MB limit")
     if suffix not in DATA_EXT:
         with path.open("rb") as fh:
-            if fh.read(4) == PARQUET_MAGIC:
-                problems.append("parquet data (whatever its name); data stays out of git")
+            head = fh.read(4)
+        if head == PARQUET_MAGIC:
+            problems.append("parquet data (whatever its name); data stays out of git")
+        elif head[:2] == GZIP_MAGIC:
+            problems.append("gzip-compressed file (whatever its name); data stays out of git")
     if suffix == ".ipynb":
         reason = notebook_problem(path)
         if reason:

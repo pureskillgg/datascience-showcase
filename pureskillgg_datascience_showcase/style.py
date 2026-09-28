@@ -115,15 +115,17 @@ def use(theme=None, preset=None, *, scale=None):
     theme is "dark" (the default) or "light"; preset is a name from PRESETS.
     Figures made afterwards, with plain matplotlib or with figure(), follow it.
     """
-    if theme is not None:
-        _state["theme"] = get_theme(theme).name
-    if preset is not None:
-        _state["preset"] = get_preset(preset).name
-    if scale is not None:
-        _state["scale"] = scale
+    candidate = {
+        "theme": get_theme(theme).name if theme is not None else _state["theme"],
+        "preset": get_preset(preset).name if preset is not None else _state["preset"],
+        "scale": scale if scale is not None else _state["scale"],
+    }
+    # Build (and so validate) everything before touching any global state.
+    params = rc_params(candidate["theme"], candidate["preset"], candidate["scale"])
     register_fonts()
     register_colormaps()
-    mpl.rcParams.update(rc_params(_state["theme"], _state["preset"], _state["scale"]))
+    mpl.rcParams.update(params)
+    _state.update(candidate)
 
 
 def current():

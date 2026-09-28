@@ -43,6 +43,11 @@ def test_too_many_series():
         psgg.series_colors(7)
 
 
+def test_negative_series_count():
+    with pytest.raises(ValueError, match="negative"):
+        psgg.series_colors(-1)
+
+
 def test_side_colors():
     assert psgg.side_color("T") == "#e89230"
     assert psgg.side_color("ct") == "#84a9dc"

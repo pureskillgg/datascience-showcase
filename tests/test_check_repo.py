@@ -46,6 +46,19 @@ def test_secrets_data_and_video_are_refused(tmp_path):
     assert "video" in problems(tmp_path, "loop.gif")[0]
 
 
+def test_more_data_video_and_image_formats(tmp_path):
+    write(tmp_path, "kills.csv", b"a,b\n1,2\n")
+    write(tmp_path, "sheet.xlsx", b"PK\x03\x04")
+    write(tmp_path, "clip.wmv", b"....")
+    write(tmp_path, "match/csds", b"\x1f\x8b\x08\x00")
+    write(tmp_path, "gallery/item/shot.avif", b"....")
+    assert "data file" in problems(tmp_path, "kills.csv")[0]
+    assert "data file" in problems(tmp_path, "sheet.xlsx")[0]
+    assert "video" in problems(tmp_path, "clip.wmv")[0]
+    assert "gzip" in problems(tmp_path, "match/csds")[0]
+    assert "PNG" in problems(tmp_path, "gallery/item/shot.avif")[0]
+
+
 def test_parquet_without_extension_is_refused(tmp_path):
     write(tmp_path, "match/player_death", b"PAR1\x00\x00")
     assert "parquet" in problems(tmp_path, "match/player_death")[0]

@@ -72,6 +72,8 @@ def series_colors(n=None, theme="dark"):
     colors = get_theme(theme).series
     if n is None:
         return list(colors)
+    if n < 0:
+        raise ValueError(f"A series count can't be negative (got {n})")
     if n > len(colors):
         raise ValueError(
             f"{n} series is more than the {len(colors)} colors that stay distinguishable; "
