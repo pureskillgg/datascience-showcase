@@ -57,8 +57,12 @@ THEMES = {"dark": DARK, "light": LIGHT}
 SERIES_NAMES = ("green", "blue", "red", "purple", "amber", "cyan")
 
 
-def get_theme(theme):
-    """Return a Theme from a name or a Theme."""
+def get_theme(theme=None):
+    """Return a Theme from a name or a Theme; None means the theme in force."""
+    if theme is None:
+        from .style import current  # pylint: disable=import-outside-toplevel,cyclic-import
+
+        theme = current()["theme"]
     if isinstance(theme, Theme):
         return theme
     try:
@@ -67,7 +71,7 @@ def get_theme(theme):
         raise ValueError(f"Unknown theme {theme!r}; use one of {sorted(THEMES)}") from err
 
 
-def series_colors(n=None, theme="dark"):
+def series_colors(n=None, theme=None):
     """The first n series colors, in their fixed order."""
     colors = get_theme(theme).series
     if n is None:
@@ -82,7 +86,7 @@ def series_colors(n=None, theme="dark"):
     return list(colors[:n])
 
 
-def side_color(side, theme="dark"):
+def side_color(side, theme=None):
     """The color for a side: 'T' (amber) or 'CT' (blue). Team codes 2 and 3 also work."""
     key = {2: "T", 3: "CT"}.get(side, str(side).upper())
     th = get_theme(theme)

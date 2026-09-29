@@ -37,6 +37,16 @@ def test_load_env_walks_up(tmp_path, monkeypatch):
     assert os.environ["PURESKILLGG_TOME_DS_TYPE"] == "csds_test"
 
 
+def test_list_tomes_counts_pages(tmp_path):
+    base = tmp_path / "tome" / "csds"
+    (base / "deaths_mirage").mkdir(parents=True)
+    for page in ("dataframe_00000", "dataframe_00001", "keyset_00000", "tome"):
+        (base / "deaths_mirage" / page).write_bytes(b"")
+    (base / "empty_one").mkdir()
+    assert psgg.list_tomes(collection=tmp_path, ds_type="csds") == {"deaths_mirage": 2, "empty_one": 0}
+    assert not psgg.list_tomes(collection=tmp_path / "nowhere", ds_type="csds")
+
+
 def test_load_env_keeps_existing_values(tmp_path, monkeypatch):
     (tmp_path / ".env").write_text("PURESKILLGG_TOME_DS_TYPE=from_file\n", encoding="utf-8")
     monkeypatch.chdir(tmp_path)

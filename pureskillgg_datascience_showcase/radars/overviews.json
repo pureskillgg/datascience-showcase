@@ -1,0 +1,402 @@
+{
+  "ar_baggage": {
+    "pos_x": -1316.0,
+    "pos_y": 1288.0,
+    "scale": 2.539062,
+    "levels": {
+      "default": {
+        "image": "ar_baggage_radar.png",
+        "min": -5.0,
+        "max": 10000.0
+      },
+      "lower": {
+        "image": "ar_baggage_lower_radar.png",
+        "min": -10000.0,
+        "max": -5.0
+      }
+    },
+    "labels": {
+      "CT spawn": [
+        0.51,
+        0.82
+      ],
+      "T spawn": [
+        0.51,
+        0.29
+      ]
+    }
+  },
+  "ar_shoots": {
+    "pos_x": -1368.0,
+    "pos_y": 1952.0,
+    "scale": 2.6875,
+    "levels": {
+      "default": {
+        "image": "ar_shoots_radar.png",
+        "min": -1000000000.0,
+        "max": 1000000000.0
+      }
+    },
+    "labels": {
+      "CT spawn": [
+        0.52,
+        0.27
+      ],
+      "T spawn": [
+        0.52,
+        0.71
+      ]
+    }
+  },
+  "cs_italy": {
+    "pos_x": -2647.0,
+    "pos_y": 2592.0,
+    "scale": 4.6,
+    "levels": {
+      "default": {
+        "image": "cs_italy_radar.png",
+        "min": -1000000000.0,
+        "max": 1000000000.0
+      }
+    },
+    "labels": {
+      "CT spawn": [
+        0.41,
+        0.91
+      ],
+      "T spawn": [
+        0.6,
+        0.1
+      ]
+    }
+  },
+  "cs_office": {
+    "pos_x": -1838.0,
+    "pos_y": 1858.0,
+    "scale": 4.1,
+    "levels": {
+      "default": {
+        "image": "cs_office_radar.png",
+        "min": -1000000000.0,
+        "max": 1000000000.0
+      }
+    },
+    "labels": {
+      "CT spawn": [
+        0.16,
+        0.89
+      ],
+      "T spawn": [
+        0.78,
+        0.3
+      ]
+    }
+  },
+  "de_ancient": {
+    "pos_x": -2953.0,
+    "pos_y": 2164.0,
+    "scale": 5.0,
+    "levels": {
+      "default": {
+        "image": "de_ancient_radar.png",
+        "min": -1000000000.0,
+        "max": 1000000000.0
+      }
+    },
+    "labels": {
+      "CT spawn": [
+        0.51,
+        0.17
+      ],
+      "T spawn": [
+        0.485,
+        0.87
+      ],
+      "A": [
+        0.31,
+        0.25
+      ],
+      "B": [
+        0.8,
+        0.4
+      ]
+    }
+  },
+  "de_anubis": {
+    "pos_x": -2796.0,
+    "pos_y": 3328.0,
+    "scale": 5.22,
+    "levels": {
+      "default": {
+        "image": "de_anubis_radar.png",
+        "min": -1000000000.0,
+        "max": 1000000000.0
+      }
+    },
+    "labels": {
+      "CT spawn": [
+        0.61,
+        0.22
+      ],
+      "T spawn": [
+        0.58,
+        0.93
+      ]
+    }
+  },
+  "de_cache": {
+    "pos_x": -2000.0,
+    "pos_y": 3250.0,
+    "scale": 5.5,
+    "levels": {
+      "default": {
+        "image": "de_cache_radar.png",
+        "min": -1000000000.0,
+        "max": 1000000000.0
+      }
+    },
+    "labels": {
+      "CT spawn": [
+        0.09775,
+        0.473
+      ],
+      "T spawn": [
+        0.887,
+        0.585
+      ],
+      "A": [
+        0.325,
+        0.26
+      ],
+      "B": [
+        0.345,
+        0.79
+      ]
+    }
+  },
+  "de_dust2": {
+    "pos_x": -2476.0,
+    "pos_y": 3239.0,
+    "scale": 4.4,
+    "levels": {
+      "default": {
+        "image": "de_dust2_radar.png",
+        "min": -1000000000.0,
+        "max": 1000000000.0
+      }
+    },
+    "labels": {
+      "CT spawn": [
+        0.62,
+        0.21
+      ],
+      "T spawn": [
+        0.39,
+        0.91
+      ],
+      "A": [
+        0.8,
+        0.16
+      ],
+      "B": [
+        0.21,
+        0.12
+      ]
+    }
+  },
+  "de_inferno": {
+    "pos_x": -2087.0,
+    "pos_y": 3870.0,
+    "scale": 4.9,
+    "levels": {
+      "default": {
+        "image": "de_inferno_radar.png",
+        "min": -1000000000.0,
+        "max": 1000000000.0
+      }
+    },
+    "labels": {
+      "CT spawn": [
+        0.9,
+        0.35
+      ],
+      "T spawn": [
+        0.1,
+        0.67
+      ],
+      "A": [
+        0.81,
+        0.69
+      ],
+      "B": [
+        0.49,
+        0.22
+      ]
+    }
+  },
+  "de_mirage": {
+    "pos_x": -3230.0,
+    "pos_y": 1713.0,
+    "scale": 5.0,
+    "levels": {
+      "default": {
+        "image": "de_mirage_radar.png",
+        "min": -1000000000.0,
+        "max": 1000000000.0
+      }
+    },
+    "labels": {
+      "CT spawn": [
+        0.28,
+        0.7
+      ],
+      "T spawn": [
+        0.87,
+        0.36
+      ],
+      "A": [
+        0.54,
+        0.76
+      ],
+      "B": [
+        0.23,
+        0.28
+      ]
+    }
+  },
+  "de_nuke": {
+    "pos_x": -3453.0,
+    "pos_y": 2887.0,
+    "scale": 7.0,
+    "levels": {
+      "default": {
+        "image": "de_nuke_radar.png",
+        "min": -495.0,
+        "max": 10000.0
+      },
+      "lower": {
+        "image": "de_nuke_lower_radar.png",
+        "min": -10000.0,
+        "max": -495.0
+      }
+    },
+    "labels": {
+      "CT spawn": [
+        0.82,
+        0.45
+      ],
+      "T spawn": [
+        0.19,
+        0.54
+      ],
+      "A": [
+        0.58,
+        0.48
+      ],
+      "B": [
+        0.58,
+        0.58
+      ]
+    }
+  },
+  "de_overpass": {
+    "pos_x": -4831.0,
+    "pos_y": 1781.0,
+    "scale": 5.2,
+    "levels": {
+      "default": {
+        "image": "de_overpass_radar.png",
+        "min": -1000000000.0,
+        "max": 1000000000.0
+      }
+    },
+    "labels": {
+      "CT spawn": [
+        0.49,
+        0.2
+      ],
+      "T spawn": [
+        0.66,
+        0.93
+      ],
+      "A": [
+        0.55,
+        0.23
+      ],
+      "B": [
+        0.7,
+        0.31
+      ]
+    }
+  },
+  "de_train": {
+    "pos_x": -2308.0,
+    "pos_y": 2078.0,
+    "scale": 4.082077,
+    "levels": {
+      "default": {
+        "image": "de_train_radar.png",
+        "min": -50.0,
+        "max": 20000.0
+      },
+      "lower": {
+        "image": "de_train_lower_radar.png",
+        "min": -5000.0,
+        "max": -50.0
+      }
+    },
+    "labels": {
+      "CT spawn": [
+        0.86,
+        0.77
+      ],
+      "T spawn": [
+        0.12,
+        0.25
+      ],
+      "A": [
+        0.63,
+        0.49
+      ],
+      "B": [
+        0.52,
+        0.76
+      ]
+    }
+  },
+  "de_vertigo": {
+    "pos_x": -3168.0,
+    "pos_y": 1762.0,
+    "scale": 4.0,
+    "levels": {
+      "default": {
+        "image": "de_vertigo_radar.png",
+        "min": 11700.0,
+        "max": 20000.0
+      },
+      "lower": {
+        "image": "de_vertigo_lower_radar.png",
+        "min": -10000.0,
+        "max": 11700.0
+      }
+    },
+    "labels": {
+      "CT spawn": [
+        0.54,
+        0.25
+      ],
+      "T spawn": [
+        0.2,
+        0.75
+      ],
+      "A": [
+        0.705,
+        0.585
+      ],
+      "B": [
+        0.222,
+        0.223
+      ]
+    }
+  }
+}
