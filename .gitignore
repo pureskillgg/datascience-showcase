@@ -8,6 +8,10 @@
 # Temporary development files
 tmp
 
+# Renders and local data: videos go to YouTube, data never goes in git
+out/
+data/
+
 # Environment versions file
 .versions
 
