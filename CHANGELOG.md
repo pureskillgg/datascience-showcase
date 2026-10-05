@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
-## Unreleased
+## 0.0.9
 
 ### Added
 
@@ -22,15 +22,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
+- Pin workflow runners to `ubuntu-24.04`.
 - Require Python 3.14 and `pureskillgg-dsdk` 3.2.
 - Rewrite the README in Markdown.
-- Harden the deploy workflows.
-- Update GitHub Actions to Node.js 24 runtimes.
 
 ### Removed
 
 - The CS:GO disconnect and M4 notebooks, the notebook template and the old `.env` bootstrap.
 - Publishing to PyPI: the publish and version workflows and bump2version. Earlier releases stay on PyPI.
+
+## 0.0.6 / 2026-08-27
+
+### Changed
+
+- Harden the deploy workflows.
+
+## 0.0.5 / 2026-08-24
+
+### Changed
+
+- Update GitHub Actions to Node.js 24 runtimes.
 
 ## 0.0.4 / 2026-06-13
 
