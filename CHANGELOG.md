@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
-## 0.0.9
+## Unreleased
 
 ### Added
 
@@ -30,6 +30,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 - The CS:GO disconnect and M4 notebooks, the notebook template and the old `.env` bootstrap.
 - Publishing to PyPI: the publish and version workflows and bump2version. Earlier releases stay on PyPI.
+
+## 0.0.8 / 2026-09-22
+
+### Changed
+
+- Publish to PyPI with `uv publish` instead of `twine`.
+
+### Fixed
+
+- Publish workflow failing on `import twine` (`KeyError: 'license'`).
 
 ## 0.0.6 / 2026-08-27
 
