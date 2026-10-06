@@ -22,15 +22,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
+- Pin workflow runners to `ubuntu-24.04`.
 - Require Python 3.14 and `pureskillgg-dsdk` 3.2.
 - Rewrite the README in Markdown.
-- Harden the deploy workflows.
-- Update GitHub Actions to Node.js 24 runtimes.
 
 ### Removed
 
 - The CS:GO disconnect and M4 notebooks, the notebook template and the old `.env` bootstrap.
 - Publishing to PyPI: the publish and version workflows and bump2version. Earlier releases stay on PyPI.
+
+## 0.0.8 / 2026-09-22
+
+### Changed
+
+- Publish to PyPI with `uv publish` instead of `twine`.
+
+### Fixed
+
+- Publish workflow failing on `import twine` (`KeyError: 'license'`).
+
+## 0.0.6 / 2026-08-27
+
+### Changed
+
+- Harden the deploy workflows.
+
+## 0.0.5 / 2026-08-24
+
+### Changed
+
+- Update GitHub Actions to Node.js 24 runtimes.
 
 ## 0.0.4 / 2026-06-13
 
