@@ -41,7 +41,7 @@ A short orientation, then the traps that make a chart quietly wrong. For every c
 
 ### Angles
 
-- **`theta_ang` is yaw** (where the player faces, −180 to 180) and **`phi_ang` is pitch** (1 to 179, with 90 level and larger looking down). The names are the reverse of the physics convention, so don't trust them.
+- **`theta_ang` is yaw** (where the player faces, −180 to 180, counterclockwise from +x seen from above) and **`phi_ang` is pitch plus 90** (1 to 179, with 90 level and larger looking down). The names follow the mathematics convention for spherical coordinates; physics texts swap the two letters, so go by these descriptions, not by the letters. [Positions and View Angles](https://docs.pureskill.gg/datascience/adx/cs2/csds/coordinates) has diagrams and the angle between a player's view and any point.
 
 ### Weapons
 
