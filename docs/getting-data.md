@@ -87,6 +87,7 @@ deaths_mirage = deaths[deaths["match_key"].isin(mirage)]
 - **See what's already built:** `psgg.list_tomes()` returns each tome with its page count. A tome with 0 pages is empty or unfinished, and `get_dataframe` fails on it with `The tome has no pages`.
 - **Read only what you need.** A whole channel works too (`"player_death"`), but naming columns makes building much faster and the tome smaller.
 - **Days from different revisions mix fine.** Older days store some flags as 0 and 1 (in `player_death`, `player_status`, `other_death` and `bomb_defuse`), newer days as true and false. `build_basic_tomes` reads them all as true and false.
+- **A tome is found by its name, not its columns.** Ask again for the same channel and days with different columns, and you get the finished tome back with its old columns. Give each set of columns its own name, as in `tome_name="weapons_{channel}.{dates}"`, or rebuild with `behavior_if_complete="overwrite"`.
 - **Running it again is cheap.** A finished tome is kept, so a second call with the same channels reads nothing. A tome can't grow, though: after downloading more days, pass a new header name, such as `header_tome_name="header.2026-08-01,2026-08-15"`. The header is then scanned again, and the channel tomes get the new dates in their names.
 - **Older revisions have fewer channels.** Days before 2026-08-04 have 30 files per match instead of 42, so a channel you ask for may be missing. The [archived spec](https://docs.pureskill.gg/datascience/old/cs2/csds/spec) lists what they had.
 
