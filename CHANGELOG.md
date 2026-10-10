@@ -23,7 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ### Changed
 
 - Pin workflow runners to `ubuntu-24.04`.
-- Require Python 3.14 and `pureskillgg-dsdk` 3.2.
+- Require Python 3.14 and `pureskillgg-dsdk` 4, which builds tomes that mix older and newer matches.
 - Rewrite the README in Markdown.
 
 ### Removed

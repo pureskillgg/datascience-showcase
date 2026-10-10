@@ -1899,7 +1899,7 @@ requires-dist = [
     { name = "numpy", specifier = ">=2.4.0,<3.0.0" },
     { name = "pandas", specifier = ">=2.3.0,<4.0.0" },
     { name = "pillow", specifier = ">=12.0.0,<13.0.0" },
-    { name = "pureskillgg-dsdk", specifier = ">=3.2.2,<4.0.0" },
+    { name = "pureskillgg-dsdk", specifier = ">=4.0.1,<5.0.0" },
     { name = "python-dotenv", specifier = ">=1.2.0,<2.0.0" },
     { name = "seaborn", specifier = ">=0.13.2,<1.0.0" },
 ]
@@ -1917,7 +1917,7 @@ dev = [
 
 [[package]]
 name = "pureskillgg-dsdk"
-version = "3.2.2"
+version = "4.0.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "aiobotocore" },
@@ -1929,9 +1929,9 @@ dependencies = [
     { name = "python-rapidjson" },
     { name = "structlog" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/16/e5/112dc2694823a86aee47b3276fddf18c690eeee5589fd76cbc11326a804c/pureskillgg_dsdk-3.2.2.tar.gz", hash = "sha256:25410a3f3d00552c8f9798c8991aec2f688d399a3a8c5d006a14e522b823dc9f", size = 33421, upload-time = "2026-09-28T03:00:24.559Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/87/a1/22f7c49479a2b227872c8e5ecb7a16a4a046d460191a42566c6664676e36/pureskillgg_dsdk-4.0.1.tar.gz", hash = "sha256:2ec3827d16ab3e5f214db0a5279614829fe2e6b53b7b4b771a5172702da73d57", size = 79840, upload-time = "2026-10-05T03:02:43.292Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/13/dd/33ef553c971a5a0541a814e8ce8f8738fe0fe108ec4141dd1691733e6cd2/pureskillgg_dsdk-3.2.2-py3-none-any.whl", hash = "sha256:8658c828c62c6c4098b608594b3e9b41badfe0e0ba9c6ea51b725c566360e97e", size = 56893, upload-time = "2026-09-28T03:00:23.254Z" },
+    { url = "https://files.pythonhosted.org/packages/9b/97/8df06cfce57554f8da6a3647d1098454db00717618e1989ffc727237355c/pureskillgg_dsdk-4.0.1-py3-none-any.whl", hash = "sha256:72309996d73c90dcdcf1df8491cbeb683cb8f3a0138b55c1fb52a87a3ec6e8bd", size = 108226, upload-time = "2026-10-05T03:02:42.001Z" },
 ]
 
 [[package]]

@@ -41,7 +41,7 @@ def list_tomes(*, collection=None, ds_type=None):
     The tomes in your tome collection, as {name: page count}.
 
     A tome with 0 pages is empty or unfinished, and get_dataframe() fails on it
-    ("No objects to concatenate"). collection and ds_type default to .env.
+    ("The tome has no pages"). collection and ds_type default to .env.
     """
     load_env()
     root = Path(collection or os.environ["PURESKILLGG_TOME_COLLECTION_PATH"])
