@@ -23,7 +23,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ### Changed
 
 - Pin workflow runners to `ubuntu-24.04`.
-- Require Python 3.14 and `pureskillgg-dsdk` 4. Its `build_basic_tomes` builds tomes that mix older and newer matches; `make_tome`, which docs/getting-data.md uses, still fails on a page that mixes them.
+- Require Python 3.14 and `pureskillgg-dsdk` 4. Its `build_basic_tomes` builds tomes that mix older and newer matches; `make_tome` still fails on a page that mixes their flag columns.
+- `docs/getting-data.md` and the `make-graphic` skill build tomes with `build_basic_tomes`, and keep `make_tome` for summarizing each match first, with the flag pitfall and its fix.
 - Rewrite the README in Markdown.
 
 ### Removed

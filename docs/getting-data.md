@@ -62,41 +62,52 @@ PURESKILLGG_TOME_DEFAULT_HEADER_NAME=header
 
 ## 6. Build tomes
 
-A **tome** combines one kind of data from many matches into a few files that load in seconds. Build the **header tome** once: it has one row per match, with the map, date, platform and more. Then make a tome for each thing you want to plot.
+A **tome** combines one kind of data from many matches into a few files that load in seconds. `build_basic_tomes` builds them in one pass over your matches: the **header tome**, with one row per match (the map, date, platform and more), and one tome for each channel you name, with every row tagged with its match in `match_key`.
 
 ```python
 import pureskillgg_datascience_showcase as psgg
 
 curator = psgg.curator()
 
-# Once, and again after downloading more days
-header = curator.create_header_tome()
-print(len(header.get_dataframe()), "matches")
+# Every death, with only the columns you need. This builds the header tome too.
+basic = curator.build_basic_tomes([
+    {"channel": "player_death", "columns": ["round", "weapon_name", "player_x_pos", "player_y_pos",
+                                            "player_z_pos", "attacker_team_code"]},
+])
+header = basic.header.get_dataframe()
+deaths = basic.tomes["player_death"].get_dataframe()
+print(len(header), "matches,", len(deaths), "deaths,", basic.dates)
 
-# Optional: a filtered view of the header, e.g. one map
-curator.create_subheader_tome("subheader_mirage", lambda df: df["map_name"] == "de_mirage")
+# Mirage only: match_key is the header's `key`
+mirage = header.loc[header["map_name"] == "de_mirage", "key"]
+deaths_mirage = deaths[deaths["match_key"].isin(mirage)]
+```
 
-# A tome of every death on Mirage, with only the columns you need
+- **Names:** each channel's tome is called `basic_<channel>.<first day>,<last day>`, like `basic_player_death.2026-08-01,2026-08-08`. Load it again later with `curator.get_dataframe(name)`.
+- **See what's already built:** `psgg.list_tomes()` returns each tome with its page count. A tome with 0 pages is empty or unfinished, and `get_dataframe` fails on it with `The tome has no pages`.
+- **Read only what you need.** A whole channel works too (`"player_death"`), but naming columns makes building much faster and the tome smaller.
+- **Days from different revisions mix fine.** Older days store some flags as 0 and 1 (in `player_death`, `player_status`, `other_death` and `bomb_defuse`), newer days as true and false. `build_basic_tomes` reads them all as true and false.
+- **Running it again is cheap.** A finished tome is kept, so a second call with the same channels reads nothing. A tome can't grow, though: after downloading more days, pass a new header name, such as `header_tome_name="header.2026-08-01,2026-08-15"`. The header is then scanned again, and the channel tomes get the new dates in their names.
+- **Older revisions have fewer channels.** Days before 2026-08-04 have 30 files per match instead of 42, so a channel you ask for may be missing. The [archived spec](https://docs.pureskill.gg/datascience/old/cs2/csds/spec) lists what they had.
+
+### When each match needs your code first
+
+`make_tome` runs your own code on every match before it's stored. Use it when the raw rows are too big to keep and you only need a summary of each match. `player_vector`, for one, has a row per player per tick. This keeps each player's share of ticks spent ducked, per round:
+
+```python
 tomer = curator.make_tome(
-    "deaths_mirage",
-    header_tome_name="subheader_mirage",
-    ds_reading_instructions=[
-        {"channel": "player_death", "columns": ["round", "weapon_name", "player_x_pos", "player_y_pos",
-                                                "player_z_pos", "attacker_team_code"]},
-    ],
+    "ducked_by_round.2026-08-01,2026-08-08",
+    ds_reading_instructions=[{"channel": "player_vector", "columns": ["round", "player_id_fixed", "is_ducked"]}],
 )
 for data, key in tomer.iterate():
-    df = data["player_death"]
+    df = data["player_vector"].groupby(["round", "player_id_fixed"], as_index=False)["is_ducked"].mean()
     df["match_key"] = key          # the match, same as the header tome's `key` column
     tomer.concat(df)
 
-deaths = curator.get_dataframe("deaths_mirage")
+ducked = curator.get_dataframe("ducked_by_round.2026-08-01,2026-08-08")
 ```
 
-- **See what's already built:** `psgg.list_tomes()` returns each tome with its page count. A tome with 0 pages is empty or unfinished, and `get_dataframe` fails on it with `The tome has no pages`.
-- **Work out the transform on one match first,** taken from the header view you'll build from, so it comes from the same days: `curator.get_match_by_index(0, "subheader_mirage").get_channels()`. Then move it into the loop.
-- **Read only what you need.** `ds_reading_instructions` picks channels and columns, and building is much faster for it.
-- **A tome can't grow once it's finished.** To add days, build it again under a new name. A common convention puts the dates in the name: `deaths_mirage.2026-08-01,2026-08-08`.
-- **Older revisions have fewer channels.** Days before 2026-08-04 have 30 files per match instead of 42, so a channel you ask for may be missing. The [archived spec](https://docs.pureskill.gg/datascience/old/cs2/csds/spec) lists what they had.
+- **Work out the transform on one match first:** `curator.get_match_by_index(0).get_channels()` gives one match's channels. Then move the code into the loop.
+- **Flags break `make_tome` across revisions.** It joins each page's matches with pandas, so a page mixing 0/1 flags with true/false ones fails with `ArrowInvalid: Could not convert 0 with type int: tried to convert to boolean`. Leave those flag columns out, or convert them in the loop: `df[flags] = df[flags].astype("boolean")`.
 
 Next: [the data primer](data-primer.md) covers what's in a match, and the traps to avoid when you plot it.

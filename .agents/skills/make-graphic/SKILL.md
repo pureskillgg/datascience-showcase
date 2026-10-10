@@ -48,7 +48,7 @@ Six series at most. A seventh goes into "Other", or the chart is split.
   - `*_id_fixed` columns can load as floats;
   - rank columns mix two scales;
   - two-floor maps need splitting by height.
-- Work the transform out on one match from the same header view the tome uses, so it's from the same days: `curator.get_match_by_index(0, "<header or subheader>").get_channels()`. Then build a tome with `make_tome` and `ds_reading_instructions` naming only the columns you need (`docs/getting-data.md`).
+- Build tomes with `curator.build_basic_tomes([...])`, naming only the channels and columns you need. It writes the header and a tome per channel, every row tagged `match_key`, and it handles days from different revisions. Use `make_tome` only when each match must be summarized before it's stored (say, `player_vector`), and work that transform out on one match first: `curator.get_match_by_index(0).get_channels()`. `docs/getting-data.md` has both.
 - **Check that the columns you need actually hold data** (`value_counts()`, null counts) before you build anything on them. If the data can't answer the question (the column is empty, missing or unreliable), **stop and tell the user**, and offer the nearest question it can answer. Never switch questions silently. For example, `player_disconnect.disconnect_reason` is always empty, so "why players leave" can't be answered, but "when they leave" can.
 - Keep a note of **how many matches and which dates**; the subtitle needs them. The play date is `header.match_date`, not the folder date.
 
