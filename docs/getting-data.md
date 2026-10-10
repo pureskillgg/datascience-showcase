@@ -93,7 +93,7 @@ for data, key in tomer.iterate():
 deaths = curator.get_dataframe("deaths_mirage")
 ```
 
-- **See what's already built:** `psgg.list_tomes()` returns each tome with its page count. A tome with 0 pages is empty or unfinished, and `get_dataframe` fails on it with `No objects to concatenate`.
+- **See what's already built:** `psgg.list_tomes()` returns each tome with its page count. A tome with 0 pages is empty or unfinished, and `get_dataframe` fails on it with `The tome has no pages`.
 - **Work out the transform on one match first,** taken from the header view you'll build from, so it comes from the same days: `curator.get_match_by_index(0, "subheader_mirage").get_channels()`. Then move it into the loop.
 - **Read only what you need.** `ds_reading_instructions` picks channels and columns, and building is much faster for it.
 - **A tome can't grow once it's finished.** To add days, build it again under a new name. A common convention puts the dates in the name: `deaths_mirage.2026-08-01,2026-08-08`.
