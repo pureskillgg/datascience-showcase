@@ -23,7 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ### Changed
 
 - Pin workflow runners to `ubuntu-24.04`.
-- Require Python 3.14 and `pureskillgg-dsdk` 4, which builds tomes that mix older and newer matches.
+- Require Python 3.14 and `pureskillgg-dsdk` 4. Its `build_basic_tomes` builds tomes that mix older and newer matches; `make_tome`, which docs/getting-data.md uses, still fails on a page that mixes them.
 - Rewrite the README in Markdown.
 
 ### Removed
