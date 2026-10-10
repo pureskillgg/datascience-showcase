@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - Require Python 3.14 and `pureskillgg-dsdk` 4. Its `build_basic_tomes` builds tomes that mix older and newer matches; `make_tome` still fails on a page that mixes their flag columns.
 - `docs/getting-data.md` and the `make-graphic` skill build tomes with `build_basic_tomes`, and keep `make_tome` for summarizing each match first, with the flag pitfall and its fix.
 - Rewrite the README in Markdown.
+- The data primer no longer says the view-angle names can't be trusted: they follow the mathematics convention. It links the docs' Positions and View Angles page.
 
 ### Removed
 
